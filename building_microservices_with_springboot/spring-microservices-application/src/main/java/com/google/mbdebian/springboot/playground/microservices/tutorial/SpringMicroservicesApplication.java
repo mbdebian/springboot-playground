@@ -19,7 +19,7 @@ import java.util.List;
 public class SpringMicroservicesApplication {
 
 	@Autowired
-	@Resource(name = "cats")
+	@Resource(name = "circus")
 	public List<String> list;
 
 
