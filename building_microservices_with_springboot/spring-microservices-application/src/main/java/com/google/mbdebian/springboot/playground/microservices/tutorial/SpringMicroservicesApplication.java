@@ -15,6 +15,7 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
+@ImportResource("/simple-context.xml")
 public class SpringMicroservicesApplication {
 
 	@Autowired
