@@ -1,3 +1,4 @@
+# When overriding the default dispatcher servlet, you need to remove the following configuration
 #server:
 #  context-path: /demo
 #  port: 9999

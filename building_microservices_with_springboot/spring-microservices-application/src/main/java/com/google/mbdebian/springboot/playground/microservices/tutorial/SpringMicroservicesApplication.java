@@ -23,11 +23,11 @@ import java.util.List;
 public class SpringMicroservicesApplication {
 
 	// Override default dispatcher servlet
+	// You need a DispatcherServlet and a ServletRegistrationBean
 	@Bean
 	public DispatcherServlet dispatcherServlet() {
 		return new DispatcherServlet();
 	}
-
 	@Bean
 	public ServletRegistrationBean registration() {
 		ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet(), "/servlet/*");
