@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,16 +14,13 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
+@Import(DemoConfiguration.class)
 public class SpringMicroservicesApplication {
 
 	@Autowired
 	@Resource(name = "cats")
 	public List<String> list;
 
-	@Bean
-	public List<String> cats() {
-		return Arrays.asList("Bengal", "Lion");
-	}
 
 	@RequestMapping("/")
 	public String message() {
