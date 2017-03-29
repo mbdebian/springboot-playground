@@ -23,6 +23,11 @@ public class SpringMicroservicesEurekaClient2Application {
 		return instance.getHomePageUrl();
 	}
 
+	@RequestMapping("/servicedescription")
+	public String serviceDescription() {
+		return "This is a description message from Client 2, registered on Eureka";
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringMicroservicesEurekaClient2Application.class, args);
 	}
