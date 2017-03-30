@@ -29,7 +29,7 @@ public class MyZuulFilter extends ZuulFilter {
     @Override
     public Object run() {
         // This is where you execute the logic of your filter
-        System.out.println("This request has passed through the custom Zuul Filter...");
+        System.out.println("[MyZuulFilter] This request has passed through the custom Zuul Filter...");
         return null;
     }
 }
