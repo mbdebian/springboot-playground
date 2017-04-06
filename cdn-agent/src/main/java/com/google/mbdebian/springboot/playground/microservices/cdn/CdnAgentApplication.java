@@ -25,11 +25,13 @@ public class CdnAgentApplication {
     @Autowired
     private ApplicationContext applicationContext;
 
+    private static final String FILE_PATH = "/Users/samael/tmp/boost_your_wifi.jpg";
+
     // Serve the file via HTTP
     @RequestMapping("/getFile")
     public ResponseEntity<?> getFile() throws IOException {
         // Resource
-        File file = applicationContext.getResource("static/images-2.jpeg").getFile();
+        File file = new File(FILE_PATH);
         logger.info("Resource at: " + file.getAbsolutePath());
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
         // HTTP Headers
@@ -37,7 +39,7 @@ public class CdnAgentApplication {
         headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
         headers.add("Pragma", "no-cache");
         headers.add("Expires", "0");
-        headers.add("Content-Disposition", "attachment");
+        headers.add("Content-Disposition", "attachment; filename=" + file.getName());
 
         return ResponseEntity.ok()
                 .headers(headers)
