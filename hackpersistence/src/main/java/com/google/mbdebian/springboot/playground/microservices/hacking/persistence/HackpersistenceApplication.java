@@ -20,6 +20,11 @@ public class HackpersistenceApplication {
 		return String.format("Word '%s' added to the list of words", word);
 	}
 
+	@RequestMapping("/get_words")
+	public String getWords() {
+		return wordMemory.getWords().toString();
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(HackpersistenceApplication.class, args);
 	}
