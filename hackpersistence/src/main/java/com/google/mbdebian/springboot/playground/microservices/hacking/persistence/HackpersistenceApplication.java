@@ -17,7 +17,7 @@ public class HackpersistenceApplication {
 	@RequestMapping("/add")
 	public String addWord(@RequestParam(value = "word", defaultValue = "defaultWord") String word) {
 		wordMemory.addWord(word);
-		return String.format("Word '%s' added to the list of words", word);
+		return String.format("Word '%s' added to the list of words (%d words now on the list)", word, wordMemory.getWords().size());
 	}
 
 	@RequestMapping("/get_words")
