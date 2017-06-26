@@ -48,12 +48,19 @@ public class CdnAgentApplication {
     }
 
     @RequestMapping(value = "showMeYourParameters", method = RequestMethod.POST)
-    @ResponseBody
-    public String showMeYourParameters(@RequestParam String filePath, @RequestParam Long startPosition, @RequestParam Long endPosition) {
+    public String showMeYourParameters(
+            @RequestParam(defaultValue = "no file path given") String filePath,
+            @RequestParam(defaultValue = "0") Long startPosition,
+            @RequestParam(defaultValue = "-1") Long endPosition) {
         return String.format("file path '%s', [start, end] = [%d, %d]",
                 filePath,
                 startPosition,
                 endPosition);
+    }
+
+    @RequestMapping(value = "showMeYourParameters", method = RequestMethod.GET)
+    public String showMeYourParameters() {
+        return "This method only accepts POST requests";
     }
 
     public static void main(String[] args) {
