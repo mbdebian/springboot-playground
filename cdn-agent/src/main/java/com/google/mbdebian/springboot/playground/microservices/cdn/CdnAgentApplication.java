@@ -48,6 +48,14 @@ public class CdnAgentApplication {
                 .body(resource);
     }
 
+    public String showMeYourParameters(String filePath, Long startPosition, Long endPosition) {
+        // TODO
+        return String.format("file path '%s', [start, end] = [%d, %d]",
+                filePath,
+                startPosition,
+                endPosition);
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(CdnAgentApplication.class, args);
     }
