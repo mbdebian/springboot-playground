@@ -10,8 +10,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -48,8 +47,9 @@ public class CdnAgentApplication {
                 .body(resource);
     }
 
-    public String showMeYourParameters(String filePath, Long startPosition, Long endPosition) {
-        // TODO
+    @RequestMapping(value = "showMeYourParameters", method = RequestMethod.POST)
+    @ResponseBody
+    public String showMeYourParameters(@RequestParam String filePath, @RequestParam Long startPosition, @RequestParam Long endPosition) {
         return String.format("file path '%s', [start, end] = [%d, %d]",
                 filePath,
                 startPosition,
