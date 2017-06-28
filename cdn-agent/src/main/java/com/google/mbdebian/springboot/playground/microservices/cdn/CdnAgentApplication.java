@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,8 +49,9 @@ public class CdnAgentApplication {
                 .body(resource);
     }
 
+    @RequestMapping("/imNotThere")
     public ResponseEntity<?> imNotThere() {
-        // TODO
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
     public static void main(String[] args) {
