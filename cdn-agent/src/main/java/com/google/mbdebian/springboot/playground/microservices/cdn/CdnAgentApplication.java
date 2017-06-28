@@ -8,10 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
@@ -49,9 +50,20 @@ public class CdnAgentApplication {
                 .body(resource);
     }
 
-    @RequestMapping("/imNotThere")
-    public ResponseEntity<?> imNotThere() {
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    @RequestMapping(value = "showMeYourParameters", method = RequestMethod.POST)
+    public String showMeYourParameters(
+            @RequestParam(defaultValue = "no file path given") String filePath,
+            @RequestParam(defaultValue = "0") Long startPosition,
+            @RequestParam(defaultValue = "-1") Long endPosition) {
+        return String.format("file path '%s', [start, end] = [%d, %d]",
+                filePath,
+                startPosition,
+                endPosition);
+    }
+
+    @RequestMapping(value = "showMeYourParameters", method = RequestMethod.GET)
+    public String showMeYourParameters() {
+        return "This method only accepts POST requests";
     }
 
     public static void main(String[] args) {
