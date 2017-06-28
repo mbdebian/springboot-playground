@@ -48,6 +48,10 @@ public class CdnAgentApplication {
                 .body(resource);
     }
 
+    public ResponseEntity<?> imNotThere() {
+        // TODO
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(CdnAgentApplication.class, args);
     }
